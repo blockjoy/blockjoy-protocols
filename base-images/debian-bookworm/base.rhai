@@ -1,5 +1,5 @@
-export const BASE_CONFIG = #{
-    config_files: [
+fn config_files() {
+    [
         #{
             template: "/var/lib/babel/templates/caddy-dashboard.template",
             destination: "/var/lib/grafana/dashboards/caddy-dashboard.json",
@@ -7,8 +7,11 @@ export const BASE_CONFIG = #{
                 node_name: node_env().node_name
             },
         },
-    ],
-    services : [
+    ]
+}
+
+fn aux_services() {
+    [
         #{
             name: "grafana",
             run_sh: "GF_USERS_DEFAULT_ROLE=Viewer \
