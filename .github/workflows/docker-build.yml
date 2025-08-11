@@ -47,7 +47,7 @@ jobs:
           echo "GIT_CONFIG_GLOBAL=$GITHUB_WORKSPACE/.gitconfig" >> $GITHUB_ENV
 
       - name: Checkout
-        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           fetch-depth: 0  # Fetch all history for all tags and branches
 
@@ -218,7 +218,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Run Trivy Dockerfile scan
         id: scan
@@ -281,7 +281,7 @@ jobs:
        needs.detect-changes.outputs.protocols_yaml_changed == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0  # Fetch all history to allow commit comparisons
 
@@ -333,7 +333,7 @@ jobs:
       image_tag: ${{ steps.version.outputs.image_tag }}
       version_tag: ${{ steps.version.outputs.version_tag }}
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Authenticate GitHub CLI
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
@@ -539,7 +539,7 @@ jobs:
     strategy:
       matrix: ${{ fromJson(needs.detect-changes.outputs.clients_matrix) }}
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Authenticate GitHub CLI
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
@@ -723,7 +723,7 @@ jobs:
       - name: Get runner hostname
         id: get-hostname
         run: echo "hostname=$(hostname)" >> $GITHUB_OUTPUT
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - name: Authenticate GitHub CLI
         run: |
           echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
